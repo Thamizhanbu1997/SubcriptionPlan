@@ -58,7 +58,7 @@ public class Plan implements Serializable {
 	private int yearlyTrips;
 
 	@Column(name="plan_createdby")
-	private BigInteger planCreatedby;
+	private BigInteger createdby;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="plan_createdon")
