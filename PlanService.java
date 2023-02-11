@@ -23,9 +23,9 @@ public class PlanService {
 
 	}
 	
-	public Long getPlanById(plan) {
+	public Long getPlanById(olan) {
 		Plan plan= planrepository.findByPlanId(planId)
-		.orElseThrow(() -> new BadRequestException(plan_not_found));
+		.orElseThrow(() -> new BadRequestException("plan_not_found"));
 		 return plan ;
 		 
 	}
