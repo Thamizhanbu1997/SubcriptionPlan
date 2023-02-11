@@ -23,8 +23,8 @@ public class PlanService {
 
 	}
 	
-	public Long getPlanById(plan) {
-		Plan plan= planrepository.findByPlanId(planid)
+	public Plan getPlanById(plan) {
+		Plan plan= planrepository.findByPlanId(plan)
 		.orElseThrow(() -> new BadRequestException("PLAN_NOT_FOUND"));
 		 return plan ;
 		 
