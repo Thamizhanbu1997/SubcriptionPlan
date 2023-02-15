@@ -1,13 +1,6 @@
 
 package com.example.subcription;
 
-
-
-
-
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,15 +16,15 @@ public class PlanService {
 
 	}
 	
-	public Plan getById(Long planId) {
-		Plan plan= planrepository.findById(planId)
+	public Plan getById(Long id) {
+		Plan plan= planrepository.findById(id)
 		.orElseThrow(() -> new BadRequestException("PLAN_NOT_FOUND"));
 		 return plan ;
 		 
 	}
 	
-	public Plan updatePlan( Long planId, Plan newplan) {
-		Plan plan=planrepository. findById(planId).orElseThrow(() -> new BadRequestException(""));
+	public Plan updatePlan( Long id, Plan newplan) {
+		Plan plan=planrepository. findById(id).orElseThrow(() -> new BadRequestException(""));
 		plan.setName(newplan.getName());
 		plan.setType(newplan.getType());
 		plan.setMonthlyAmount(newplan.getMonthlyAmount());
@@ -51,13 +44,14 @@ public class PlanService {
 
 	}
 
-	public void deletePlan(Long planId) {
-		Plan plan=planrepository.findById(planId)
+	public void deletePlan(Long id) {
+		Plan plan=planrepository.findById(id)
 				.orElseThrow(() -> new BadRequestException("PLAN_NOT_FOUND"));
 		planrepository.delete(plan);
 		
 	}
 
+	
 	
 	}
 
