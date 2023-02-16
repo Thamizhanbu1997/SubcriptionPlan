@@ -1,6 +1,8 @@
 
 package com.example.subcription;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class PlanService {
 		 
 	}
 	
+	public List<Plan> findAll() {
+	       return planrepository.findAll();
+		}
+
 	public Plan updatePlan( Long id, Plan newplan) {
 		Plan plan=planrepository. findById(id).orElseThrow(() -> new BadRequestException(""));
 		plan.setName(newplan.getName());
@@ -51,6 +57,8 @@ public class PlanService {
 		
 	}
 
+	
+	 
 	
 	
 	}
