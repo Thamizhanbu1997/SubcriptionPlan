@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 
-public interface PlanRepository extends JpaRepository<Plan, Long>, JpaSpecificationExecutor<Plan> {
+public interface PlanRepository extends JpaRepository<Plan, Long> {
      String FILTER_PLANS_FIRST_NAME_AND_LAST_NAME_QUERY = null;
 
 	@Query(FILTER_PLANS_FIRST_NAME_AND_LAST_NAME_QUERY)
