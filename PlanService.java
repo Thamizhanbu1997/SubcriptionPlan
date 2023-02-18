@@ -1,9 +1,12 @@
 
 package com.example.subcription;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
+import org.h2.mvstore.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,10 +28,12 @@ public class PlanService {
 		 
 	}
 	
-	public List<Plan> findAll() {
-	       return planrepository.findAll();
+	public Page<Plan> findAll(String firstNameFilter, String lastNameFilter, int page, int size) {
+		Pageable pageable = (Pageable) PageRequest.of(page, size);
+	       return planrepository.findAll(firstNameFilter, lastNameFilter, pageable);
 		}
 
+	
 	public Plan updatePlan( Long id, Plan newplan) {
 		Plan plan=planrepository. findById(id).orElseThrow(() -> new BadRequestException(""));
 		plan.setName(newplan.getName());
@@ -56,6 +61,8 @@ public class PlanService {
 		planrepository.delete(plan);
 		
 	}
+
+	
 
 	
 	 
