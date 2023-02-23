@@ -13,9 +13,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface PlanRepository extends JpaRepository<Plan, Long>, JpaSpecificationExecutor<Plan> {
      
-     public Page<Plan> findAll(Specification<Plan> spec, Pageable pageable);
      
-     public List<Plan> findAll(Specification<Plan> spec); 
+    
+	
+	public Page findAll(String name, int page, int pageSize); 
 	
 	}
 	
