@@ -47,7 +47,7 @@ public class PlanController {
 	@GetMapping
 	public Page<Plan> findAll(PlanSearchCriteria criteria) { 
 		      
-				return planService.findAll(criteria); 
+		return planService.findAll(criteria); 
 		      }                         
 	
    
