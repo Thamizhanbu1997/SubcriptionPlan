@@ -47,10 +47,10 @@ public class PlanController {
 	
 	@GetMapping
 	public Page<Plan> findAll(@RequestParam(name="name") String name,
-		      @RequestParam(defaultValue = "0",name="page") String page,
-		      @RequestParam(defaultValue = "10",  name= "pageSize") String pageSize) {
-		    	
-				return planService.findAll(PlanSearchCriteria); 
+		      @RequestParam(defaultValue = "0",name="page") int page,
+		      @RequestParam(defaultValue = "10",  name= "pageSize") int pageSize) {
+		    	PlanSearchCriteria criteria= new PlanSearchCriteria();
+				return planService.findAll( PlanSearchCriteria, criteria); 
 		      }                         
 	
    
