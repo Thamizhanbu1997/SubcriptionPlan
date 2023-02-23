@@ -28,9 +28,9 @@ public class PlanService {
 		 
 	}
 	
-	public Page<Plan> findAll(String name, String page, String pageSize) {
+	public Page findAll( String PlanSearchCriteria, PlanSearchCriteria criteria) {
 		
-		   return planrepository.findAll(name,page, pageSize);
+		   return planrepository.findAll());
 		}
 
 	
@@ -61,6 +61,11 @@ public class PlanService {
 		planrepository.delete(plan);
 		
 	}
+
+	
+
+	
+	
 
 	
 
