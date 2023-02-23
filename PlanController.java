@@ -32,8 +32,7 @@ public class PlanController {
 	
 	@Autowired
 	PlanService planService;
-	private String PlanSearchCriteria;
-
+	
 	@PostMapping
 	public Plan createPlan(@RequestBody Plan plan) {
 		return planService.save(plan);
@@ -46,11 +45,9 @@ public class PlanController {
 	}
 	
 	@GetMapping
-	public Page<Plan> findAll(@RequestParam(name="name") String name,
-		      @RequestParam(defaultValue = "0",name="page") int page,
-		      @RequestParam(defaultValue = "10",  name= "pageSize") int pageSize) {
-		    	PlanSearchCriteria criteria= new PlanSearchCriteria();
-				return planService.findAll(PlanSearchCriteria,criteria); 
+	public Page<Plan> findAll(String PlanSearchCriteria) { 
+		      PlanSearchCriteria criteria= new PlanSearchCriteria();
+				return planService.findAll(criteria); 
 		      }                         
 	
    
