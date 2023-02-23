@@ -50,7 +50,7 @@ public class PlanController {
 		      @RequestParam(defaultValue = "0",name="page") int page,
 		      @RequestParam(defaultValue = "10",  name= "pageSize") int pageSize) {
 		    	PlanSearchCriteria criteria= new PlanSearchCriteria();
-				return planService.findAll( PlanSearchCriteria, criteria); 
+				return planService.findAll(PlanSearchCriteria,criteria); 
 		      }                         
 	
    
