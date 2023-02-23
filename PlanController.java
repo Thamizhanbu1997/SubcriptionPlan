@@ -43,12 +43,12 @@ public class PlanController {
 	}
 	
 	@GetMapping
-	public Page<Plan> findAll(@RequestParam(defaultValue = "") String firstNameFilter,
-	      @RequestParam(defaultValue = "") String lastNameFilter,
-	      @RequestParam(defaultValue = "") int page,
-	      @RequestParam(defaultValue = "") int size) {
-	    	return planService.findAll(firstNameFilter, lastNameFilter, page, size); 
-	      }
+	public Page<Plan> findAll(@RequestParam(name="name") String name,
+		      @RequestParam(defaultValue = "0") int page ,
+		      @RequestParam(defaultValue = "10")  int pageSize) {
+		    	return planService.findAll(name, page, pageSize); 
+		      }                         
+	
    
 	@PutMapping(value = "{id}")
 	public Plan updatePlan(@PathVariable ("id")Long id, Plan plan) {
