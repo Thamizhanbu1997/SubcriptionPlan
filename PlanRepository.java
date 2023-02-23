@@ -16,7 +16,7 @@ public interface PlanRepository extends JpaRepository<Plan, Long>, JpaSpecificat
      
     
 	
-	public Page findAll(String name, int page, int pageSize); 
+	public Page findAll(String name, String page, String pageSize); 
 	
 	}
 	
