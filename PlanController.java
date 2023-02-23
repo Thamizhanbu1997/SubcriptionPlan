@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.h2.mvstore.Page;
+import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,10 @@ import net.bytebuddy.asm.Advice.Return;
 @RestController
 @RequestMapping("/api/v1/plan")
 public class PlanController {
+	
 	@Autowired
 	PlanService planService;
+	private String PlanSearchCriteria;
 
 	@PostMapping
 	public Plan createPlan(@RequestBody Plan plan) {
@@ -46,7 +49,8 @@ public class PlanController {
 	public Page<Plan> findAll(@RequestParam(name="name") String name,
 		      @RequestParam(defaultValue = "0",name="page") String page,
 		      @RequestParam(defaultValue = "10",  name= "pageSize") String pageSize) {
-		    	return planService.findAll(name, page, pageSize); 
+		    	
+				return planService.findAll(PlanSearchCriteria); 
 		      }                         
 	
    
