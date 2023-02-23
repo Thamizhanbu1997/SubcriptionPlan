@@ -44,8 +44,8 @@ public class PlanController {
 	
 	@GetMapping
 	public Page<Plan> findAll(@RequestParam(name="name") String name,
-		      @RequestParam(defaultValue = "0") int page ,
-		      @RequestParam(defaultValue = "10")  int pageSize) {
+		      @RequestParam(defaultValue = "0",name="page") String page,
+		      @RequestParam(defaultValue = "10",  name= "pageSize") String pageSize) {
 		    	return planService.findAll(name, page, pageSize); 
 		      }                         
 	
