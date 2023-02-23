@@ -28,9 +28,9 @@ public class PlanService {
 		 
 	}
 	
-	public Page<Plan> findAll(String firstNameFilter, String lastNameFilter, int page, int size) {
-		Pageable pageable = (Pageable) PageRequest.of(page, size);
-	       return planrepository.findAll(firstNameFilter, lastNameFilter, pageable);
+	public Page<Plan> findAll(String name, int page, int pageSize) {
+		Pageable pageable = (Pageable) PageRequest.of(page, pageSize);
+	       return planrepository.findAll(name,page, pageSize);
 		}
 
 	
