@@ -1,17 +1,17 @@
 
 package com.example.subcription;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.h2.mvstore.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -35,11 +35,10 @@ public class PlanService {
 		 
 	}
 	
-	  public Page findAll(PlanSearchCriteria criteria) {
+	  public Page<Plan> findAll(PlanSearchCriteria criteria) {
 		PageRequest pageable = PageRequest.of(Objects.requireNonNullElse(criteria.getPage(), 0), Objects.requireNonNullElse(criteria.getPageSize(),10));
-
-		   return planrepository.findAll(Specification<Plan>);
-		}
+		   return planrepository.findAll(specification(criteria),pageable);
+	}
 
 	
 	 public Specification<Plan> specification(PlanSearchCriteria criteria) {
