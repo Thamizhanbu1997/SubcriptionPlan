@@ -35,9 +35,10 @@ public class PlanService {
 		 
 	}
 	
-	public Page findAll(PlanSearchCriteria criteria) {
-		
-		   return planrepository.findAll());
+	  public Page findAll(PlanSearchCriteria criteria) {
+		PageRequest pageable = PageRequest.of(Objects.requireNonNullElse(criteria.getPage(), 0), Objects.requireNonNullElse(criteria.getPageSize(),10));
+
+		   return planrepository.findAll(Specification<Plan>);
 		}
 
 	
@@ -50,10 +51,15 @@ public class PlanService {
 			if(criteria.getName() != null) {
 				predicates.add(cBuilder.like(cBuilder.lower(root.get("name")),"%" + criteria.getName().toLowerCase() + "%"));
 			}
-			
-			
+			if(criteria.getPage()!=null) {
+				predicates.add(cBuilder.and(cBuilder.equal(root.get("page"),criteria.getPage())));
+			}
+			if(criteria.getPageSize()!=null) {
+				predicates.add(cBuilder.and(cBuilder.equal(root.get("pageSize"), criteria.getPageSize())));
+				
+			}
 			return cBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
-			   
+			   }
 			   };
 	
 }
