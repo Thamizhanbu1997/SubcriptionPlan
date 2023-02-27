@@ -50,13 +50,7 @@ public class PlanService {
 			if(criteria.getName() != null) {
 				predicates.add(cBuilder.like(cBuilder.lower(root.get("name")),"%" + criteria.getName().toLowerCase() + "%"));
 			}
-			if(criteria.getPage()!=null) {
-				predicates.add(cBuilder.and(cBuilder.equal(root.get("page"),criteria.getPage())));
-			}
-			if(criteria.getPageSize()!=null) {
-				predicates.add(cBuilder.and(cBuilder.equal(root.get("pageSize"), criteria.getPageSize())));
-				
-			}
+			
 			return cBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
 			   }
 			   };
